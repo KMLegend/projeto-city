@@ -13,7 +13,6 @@ SHAREPOINT_SITE = env('sharepoint_url_site')
 SHAREPOINT_SITE_NAME = env('sharepoint_site_name')
 SHAREPOINT_DOC = env('sharepoint_doc_library')
 
-
 class SharePoint:
     def _auth(self):
         conn = ClientContext(SHAREPOINT_SITE).with_credentials(

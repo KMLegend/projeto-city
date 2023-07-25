@@ -1,28 +1,24 @@
 import pandas as pd
 import os
 
-storage = 'C:\\Users\\kevin.maykel\\Documents\\Meus Projetos\\Python\\projeto-city\\storage'
+storage = 'C:\\Users\\kevin.maykel\\Documents\\Meus Projetos\\projeto-city\\storage'
 lista_arquivos = os.listdir(storage)
 
-lista_arquivos = [i.split('Piloto - Tabela - ', 2) for i in lista_arquivos]
+caminho = "C:\\Users\\kevin.maykel\\Documents\\Meus Projetos\\projeto-city\\storage\\Piloto - Tabela - " # Caminho para as tabelas.
 
 
-print(list(filter(lambda x: x[0].lower() in 'a', lista_arquivos)))
-
-"""
-def qual_tabela():
-    print("1")
-    for tabelas in lista_arquivos:
-        #print("2")
-        if lista_arquivos[0] == ['', 'Azure  .xlsx']:
-            print("3")
-            print("tabelas")
-
+def qual_tabela(): # Função que opera as tabelas individualmente.
+    
+    for tabelas in lista_arquivos: # Para tabelas na lista de arquivos do Storage.
+        quebra = tabelas.split("Piloto - Tabela - ") # Quebra uniformemente os nomes de tabela.
+        
+        for nome in quebra: # Para nome de tabelas que foi quebrada.
+            if nome[0:] == "Atmos.xlsx": # if de operação das tabelas individualmente.
+                df = pd.read_excel(caminho + nome, sheet_name="Tabelas")
+                print(df)
+                
+            
+                
+    
+# Piloto - Tabela - Atmos.xlsx    
 qual_tabela()
-
-
-nomeTabela = "Piloto - Tabela - " + tabela + ".xlsx"
-
-df = pd.read_excel("storage\\{nomeTabela}")
-
-"""
